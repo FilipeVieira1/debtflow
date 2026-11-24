@@ -21,7 +21,7 @@ public class Main {
         System.out.println(description + " - " + creditor + " - R$" + debtValue + " - " + installments + " parcelas");
         
         float installmentValue = (float) debtValue / installments;
-        System.out.println("O valor de cada parcela será de R$" + installmentValue);
+        System.out.printf("O valor de cada parcela será de R$%.2f%n", installmentValue);
         }
         scanner.close();
         

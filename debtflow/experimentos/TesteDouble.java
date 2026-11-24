@@ -1,4 +1,5 @@
-public class doble {
+package debtflow.experimentos;
+public class TesteDouble {
 
     public static void main(String[] args){
         double doble1 = 0.1;

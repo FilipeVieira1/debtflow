@@ -1,0 +1,6 @@
+    linha 20 System.out.printf("O valor de cada parcela será de R$%.2f%n", installmentValue);
+
+if (installments < 1){
+            System.out.println("O número de parcelas deve ser maior que 0.");
+        }
+        
