@@ -15,9 +15,15 @@ public class Main {
         double debtValue = scanner.nextDouble();
         System.out.println("Qual o número de parcelas?");
         int installments = scanner.nextInt();
+        if (installments < 1){
+            System.out.println("O número de parcelas deve ser maior que 0.");
+        }else{
         System.out.println(description + " - " + creditor + " - R$" + debtValue + " - " + installments + " parcelas");
+        
         float installmentValue = (float) debtValue / installments;
-        System.out.printf("O valor de cada parcela será de R$", installmentValue);
+        System.out.println("O valor de cada parcela será de R$" + installmentValue);
+        }
         scanner.close();
+        
     }
 }
