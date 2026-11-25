@@ -24,15 +24,20 @@ public class Main {
         double debtValue = scanner.nextDouble();
         System.out.println("Qual o número de parcelas?");
         int installments = scanner.nextInt();
+        double installmentValue = (double) debtValue / installments;
+
+        // validação de entrada de dados
         if (installments < 1 || debtValue < 0) {
             System.out.println("O número de parcelas deve ser maior que 0 e o valor da dívida deve ser positivo.");
         } else {
             System.out.println("Descrição: " + description + "\nCredor: " + creditor + "\nValor: R$" + debtValue + "\nParcelas: " + installments);
-
-            double installmentValue = (double) debtValue / installments;
-            System.out.printf("O valor de cada parcela será de R$", installmentValue);
+            System.out.printf("O valor de cada parcela será de R$ %.2f%n", installmentValue);
         }
+        
+            
         scanner.close();
-
+        for (int i = 1; i <= installments; i++){
+            System.out.printf("Parcela %d: R$ %.2f%n", i, installmentValue);
+        }
     }
 }
