@@ -1,1 +1,3 @@
-./experimentos/
+experimentos/
+bin/
+*.class
