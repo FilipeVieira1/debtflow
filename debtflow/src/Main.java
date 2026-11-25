@@ -35,15 +35,17 @@ public class Main {
         if (installments < 1 || debtValue < 1) {
             System.out.println("O número de parcelas deve ser maior que 0 e o valor da dívida deve ser positivo.");
         } else {
-            double installmentValue = debtValue % installments;
+            double installmentValue = debtValue / installments;
+            double cents = debtValue % installments;
+            installmentValue += cents / installments; // adiciona os centavos restantes à primeira parcela
             System.out.printf("Descrição: %s\nCredor: %s\nValor: R$ %.2f\nParcelas: %d\n", description, creditor, debtValue, installments);
             System.out.printf("O valor de cada parcela será de R$ %.2f%n", installmentValue);
 
             // exibe o valor de cada parcela
             
             for (int i = 1; i <= installments; i++){
-                firstInstallmentDate = firstInstallmentDate.plusMonths(1); // adiciona 1 mês à data da primeira parcela
                 System.out.printf("Parcela %d - R$ %.2f - vencimento: %s%n", i, installmentValue, firstInstallmentDate.format(formatter));
+                firstInstallmentDate = firstInstallmentDate.plusMonths(1); // adiciona 1 mês à data da primeira parcela
             }
         }
         
