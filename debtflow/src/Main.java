@@ -1,11 +1,16 @@
 import java.util.Scanner;
 import java.util.Locale;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 
 
 public class Main {
-    Locale ptBr = new Locale.Builder().setLanguage("pt").setRegion("BR").build();
+    Locale ptBr = new Locale.Builder().setLanguage("pt").setRegion("BR").build(); // define a localidade para pt-BR (teclado)
     public static void main(String[] args) throws Exception {
+        LocalDate currentDate = LocalDate.now(); // obtem data atual
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy"); // formata a data para o padrão brasileiro
+        System.out.println("Data atual: " + currentDate.format(formatter));
         Scanner scanner = new Scanner(System.in);
         System.out.println("=====================");
         System.out.println("Welcome to DebtFlow!");
