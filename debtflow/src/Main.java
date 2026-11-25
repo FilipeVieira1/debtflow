@@ -6,8 +6,10 @@ import java.time.format.DateTimeFormatter;
 
 
 public class Main {
-    Locale ptBr = new Locale.Builder().setLanguage("pt").setRegion("BR").build(); // define a localidade para pt-BR (teclado)
+    
     public static void main(String[] args) throws Exception {
+        Locale ptBr = new Locale.Builder().setLanguage("pt").setRegion("BR").build(); // define o locale para português do Brasil
+        Locale.setDefault(ptBr);
         LocalDate currentDate = LocalDate.now(); // obtem data atual
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy"); // formata a data para o padrão brasileiro
         System.out.println("Data atual: " + currentDate.format(formatter));
@@ -16,6 +18,7 @@ public class Main {
         System.out.println("Welcome to DebtFlow!");
         System.out.println("=====================");
         System.out.println("");
+        scanner.useLocale(ptBr);
         System.out.println("Qual a descrição da dívida?");
         String description = scanner.nextLine();
         System.out.println("Qual o credor da dívida?");
@@ -24,20 +27,23 @@ public class Main {
         double debtValue = scanner.nextDouble();
         System.out.println("Qual o número de parcelas?");
         int installments = scanner.nextInt();
-        double installmentValue = (double) debtValue / installments;
+        scanner.close();
+        
 
         // validação de entrada de dados
-        if (installments < 1 || debtValue < 0) {
+        if (installments < 1 || debtValue < 1) {
             System.out.println("O número de parcelas deve ser maior que 0 e o valor da dívida deve ser positivo.");
         } else {
-            System.out.println("Descrição: " + description + "\nCredor: " + creditor + "\nValor: R$" + debtValue + "\nParcelas: " + installments);
+            double installmentValue = debtValue / installments;
+            System.out.printf("Descrição: %s\nCredor: %s\nValor: R$ %.2f\nParcelas: %d\n", description, creditor, debtValue, installments);
             System.out.printf("O valor de cada parcela será de R$ %.2f%n", installmentValue);
+
+            // exibe o valor de cada parcela
+            for (int i = 1; i <= installments; i++){
+            System.out.printf("Parcela %d: R$ %.2f%n", i, installmentValue);
+            }
         }
         
-            
-        scanner.close();
-        for (int i = 1; i <= installments; i++){
-            System.out.printf("Parcela %d: R$ %.2f%n", i, installmentValue);
-        }
+        
     }
 }
